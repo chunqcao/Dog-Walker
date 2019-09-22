@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_09_12_024215) do
 
-  create_table "dogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.date "birth"
     t.string "gender"
@@ -20,33 +20,33 @@ ActiveRecord::Schema.define(version: 2019_09_12_024215) do
     t.string "breed"
     t.binary "photo"
     t.text "description"
-    t.bigint "user_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_dogs_on_user_id"
   end
 
-  create_table "dogs_events", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "dog_id", null: false
-    t.bigint "event_id", null: false
+  create_table "dogs_events", id: false, force: :cascade do |t|
+    t.integer "dog_id", null: false
+    t.integer "event_id", null: false
     t.index ["dog_id"], name: "index_dogs_events_on_dog_id"
     t.index ["event_id"], name: "index_dogs_events_on_event_id"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.decimal "price", precision: 10
+    t.decimal "price"
     t.text "dog_performance"
     t.integer "rate_for_walker"
     t.text "comment_for_walker"
-    t.bigint "walker_id"
+    t.integer "walker_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["walker_id"], name: "index_events_on_walker_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
     t.string "street"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_024215) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "walkers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "walkers", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
     t.string "street"
