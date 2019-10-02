@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateDogsEventsJoinTable < ActiveRecord::Migration[6.0]
   def change
     create_join_table :dogs, :events do |t|
